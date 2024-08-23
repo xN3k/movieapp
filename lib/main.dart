@@ -41,9 +41,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    Provider.of<MovieProvider>(context, listen: false).loadMovies(context);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // final themeProvider = Provider.of<ThemeProvider>(context);
-    final movie = Provider.of<MovieProvider>(context).loadMovies();
+    final movieData = Provider.of<MovieProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -52,12 +58,26 @@ class _HomeScreenState extends State<HomeScreen> {
           ToggleThemeButton(),
         ],
       ),
-      body: Center(
-        child: ListView.builder(
-          itemCount: movie.length,
-          itemBuilder: (context, index) {
-            return Text(movie[index]);
-          },
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: ListView.builder(
+            itemCount: movieData.movieList.length,
+            itemBuilder: (context, index) {
+              final movie = movieData.movieList[index];
+              return ListTile(
+                title: Text(movie.title),
+                subtitle: Text(movie.imdbRating),
+                leading: CircleAvatar(
+                  child: Text(movie.title[0]),
+                ),
+              );
+              // return SizedBox(
+              //   height: 40,
+              //   child: Text(movie[index]),
+              // );
+            },
+          ),
         ),
       ),
     );
