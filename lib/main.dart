@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/providers/movie_provider.dart';
 import 'package:movie_app/providers/theme_provider.dart';
+import 'package:movie_app/screens/movie_detail_screen.dart';
+import 'package:movie_app/widgets/movie_card.dart';
+import 'package:movie_app/widgets/movie_detail_widget.dart';
 import 'package:movie_app/widgets/toggle_theme_button.dart';
 import 'package:provider/provider.dart';
 
@@ -58,26 +62,20 @@ class _HomeScreenState extends State<HomeScreen> {
           ToggleThemeButton(),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: ListView.builder(
-            itemCount: movieData.movieList.length,
-            itemBuilder: (context, index) {
-              final movie = movieData.movieList[index];
-              return ListTile(
-                title: Text(movie.title),
-                subtitle: Text(movie.imdbRating),
-                leading: CircleAvatar(
-                  child: Text(movie.title[0]),
-                ),
-              );
-              // return SizedBox(
-              //   height: 40,
-              //   child: Text(movie[index]),
-              // );
-            },
-          ),
+      body: Center(
+        child: ListView.builder(
+          itemCount: movieData.movieList.length,
+          itemBuilder: (context, index) {
+            final movie = movieData.movieList[index];
+            return MovieCard(movie: movie);
+            // return ListTile(
+            //   title: Text(movie.title),
+            //   subtitle: Text(movie.imdbRating),
+            //   leading: CircleAvatar(
+            //     child: Text(movie.title[0]),
+            //   ),
+            // );
+          },
         ),
       ),
     );
