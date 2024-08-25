@@ -17,6 +17,16 @@ class MovieDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             MovieDetail(movie: movie),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Scenes",
+              style: Theme.of(context)
+                  .textTheme
+                  .labelLarge
+                  ?.copyWith(fontWeight: FontWeight.bold),
+            ),
             SizedBox(
               height: 200,
               width: double.infinity,
