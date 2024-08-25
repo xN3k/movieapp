@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/providers/movie_provider.dart';
 import 'package:movie_app/providers/theme_provider.dart';
-import 'package:movie_app/screens/movie_detail_screen.dart';
 import 'package:movie_app/widgets/movie_card.dart';
-import 'package:movie_app/widgets/movie_detail_widget.dart';
 import 'package:movie_app/widgets/toggle_theme_button.dart';
 import 'package:provider/provider.dart';
 
